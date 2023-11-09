@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row">
+        <div class="col-6">
+            <h2>Register</h2>
+            {% if register_message %}
+                <p style="color: red;">{{register_message}}</p>
+            {% endif %}
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <label for="conf_password">Confirm Password</label>
+                <input type="password" id="conf_password" name="conf_password">
+                <label for="job-title">Job Title:</label>
+                <input type="text" name="job_title" id="job_title">
+                <button class="btn-danger" type="submit">Register</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <h2>Log in</h2>
+            {% if login_message %}
+                <p style="color:red">{{login_message}}</p>   
+            {% endif %}
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <button class="btn-danger" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
