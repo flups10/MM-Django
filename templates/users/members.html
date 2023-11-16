@@ -7,7 +7,7 @@
 </head>
 <body>
     <a href="{% url 'logout' %}">Log out</a>
-    <p>welcome, {{request.user.name}}</p>
+    <p>welcome, {{ user }}</p>
 
     <h1>LinkedIn Members</h1>
     {% for memb in members %}
@@ -17,7 +17,6 @@
                 <button class="btn-dark">View profile</button>
             </a>
         </p>
-        
     {% endfor %}
 </body>
 </html>
